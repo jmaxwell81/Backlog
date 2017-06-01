@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Backlog snapshot" max_length="40" name="x_agsn_backlog_backlog_snapshot" type="collection">
+        <element label="Assigned to" max_length="32" name="assigned_to" read_only="true" reference="sys_user" type="reference"/>
+        <element label="Assignment group" max_length="32" name="assignment_group" read_only="true" reference="sys_user_group" type="reference"/>
+        <element label="Backlog business duration" max_length="40" name="backlog_business_duration" read_only="true" type="glide_duration"/>
+        <element label="Backlog Category" max_length="40" name="backlog_category" read_only="true" type="string"/>
+        <element label="Company" max_length="32" name="company" reference="core_company" type="reference"/>
+        <element choice="1" choice_field="impact" choice_table="task" label="Impact" max_length="40" name="impact" type="choice">
+            <choice/>
+        </element>
+        <element label="Opened" max_length="40" name="opened" read_only="true" type="glide_date_time"/>
+        <element choice="1" choice_field="priority" choice_table="task" label="Priority" max_length="40" name="priority" type="choice">
+            <choice/>
+        </element>
+        <element label="Short description" max_length="200" name="short_description" read_only="true" type="string"/>
+        <element label="Snapshot Date/Time" max_length="40" name="snapshot_date_time" read_only="true" type="glide_date_time"/>
+        <element choice="1" choice_field="state" choice_table="task" label="State" max_length="40" name="state" type="choice">
+            <choice/>
+        </element>
+        <element label="Task" max_length="32" name="task" read_only="true" reference="sc_ic_task_defn_staging" type="reference"/>
+        <index name="index">
+            <element name="task"/>
+        </index>
+        <index name="index2">
+            <element name="assignment_group"/>
+        </index>
+        <index name="index3">
+            <element name="company"/>
+        </index>
+        <index name="index4">
+            <element name="assigned_to"/>
+        </index>
+    </element>
+</database>
