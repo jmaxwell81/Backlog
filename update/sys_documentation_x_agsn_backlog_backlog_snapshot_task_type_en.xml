@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="opened" label="Opened" language="en" table="x_agsn_backlog_backlog_snapshot">
+    <sys_documentation element="task_type" label="Task type" language="en" table="x_agsn_backlog_backlog_snapshot">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>opened</element>
+            <element>task_type</element>
             <help/>
             <hint/>
-            <label>Opened</label>
+            <label>Task type</label>
             <language>en</language>
             <name>x_agsn_backlog_backlog_snapshot</name>
-            <plural>Opened</plural>
+            <plural>Task types</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>administrator</sys_created_by>
-            <sys_created_on>2017-06-01 20:24:55</sys_created_on>
+            <sys_created_on>2017-06-02 02:06:49</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>6b5d525adb0732001cd85dd5ce961937</sys_id>
+            <sys_id>239b2f9edb0732001cd85dd5ce9619a5</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>Opened</sys_name>
+            <sys_name>Task type</sys_name>
             <sys_package display_value="Backlog" source="x_agsn_backlog">0e9b9616db0732001cd85dd5ce961954</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Backlog">0e9b9616db0732001cd85dd5ce961954</sys_scope>
-            <sys_update_name>sys_documentation_x_agsn_backlog_backlog_snapshot_opened_en</sys_update_name>
+            <sys_update_name>sys_documentation_x_agsn_backlog_backlog_snapshot_task_type_en</sys_update_name>
             <sys_updated_by>administrator</sys_updated_by>
-            <sys_updated_on>2017-06-01 20:24:55</sys_updated_on>
+            <sys_updated_on>2017-06-02 02:06:49</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

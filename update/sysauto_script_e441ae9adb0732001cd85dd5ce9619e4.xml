@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name> Backlog Snapshot</name>
+        <run_as display_value="System Administrator">c0867cf8dbd93240dcfdff9aae9619b7</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2017-06-01 20:41:56</run_start>
+        <run_time>1970-01-01 20:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[var nowDateTime = new GlideDateTime().getDisplayValue();
+// snapshot de los tickets que estan en cualquier estado menos resuelto, cerrado y cancelado
+// se ejecuta a la 1pm ya que esta es una hora en ya debió de exitir un movimiento considerable en tickets.
+var snapshot = new GlideRecord('task');
+snapshot.addQuery('state', '!=', '6');
+snapshot.addQuery('state', '!=', '7');
+snapshot.addQuery('state', '!=', '8');
+snapshot.addQuery('sys_class_name', '!=', 'sc_request');
+snapshot.query();
+ 
+gs.info("Backlog snapshot begins");
+gs.info("Count: " + snapshot.getRowCount());
+
+
+while (snapshot.next()) {
+      //gs.info("sys id: " +  snapshot.sys_id);
+     
+	  var gr = new GlideRecord('x_agsn_backlog_backlog_snapshot');
+          gr.initialize();
+	
+	      gr.snapshot_date_time = nowDateTime;
+          gr.setValue('task', snapshot.sys_id); 
+	      gr.task_for = snapshot.u_task_for.sys_id;
+          gr.company = snapshot.company.sys_id;
+	      gr.short_description = snapshot.short_description; 
+          gr.assigned_to = snapshot.assigned_to.sys_id;
+	      gr.assignment_group = snapshot.assignment_group.sys_id;
+	      gr.impact = snapshot.impact;    
+	      gr.urgency = snapshot.urgency;
+	      gr.priority = snapshot.priority;
+	      gr.task_type = snapshot.sys_class_name;
+	      gr.updated = snapshot.sys_updated_on;
+	      gr.approval = snapshot.approval;
+          gr.state = snapshot.state;
+	      gr.reassignment_count = snapshot.reassignment_count;
+	      gr.opened_at = snapshot.opened_at;
+	      gr.backlog_category = snapshot.u_backlog_category;
+	      gr.backlog_business_duration = snapshot.u_backlog_business_duration;
+	     	
+          gr.insert();
+  
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>administrator</sys_created_by>
+        <sys_created_on>2017-06-01 20:43:23</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e441ae9adb0732001cd85dd5ce9619e4</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name> Backlog Snapshot</sys_name>
+        <sys_package display_value="Backlog" source="x_agsn_backlog">0e9b9616db0732001cd85dd5ce961954</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Backlog">0e9b9616db0732001cd85dd5ce961954</sys_scope>
+        <sys_update_name>sysauto_script_e441ae9adb0732001cd85dd5ce9619e4</sys_update_name>
+        <sys_updated_by>administrator</sys_updated_by>
+        <sys_updated_on>2017-06-02 02:50:53</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
